@@ -1,12 +1,15 @@
-document.body.style.display = "flex";
+
 document.body.style.height = "100%";
 document.body.style.flexWrap = "wrap";
 document.body.style.backgroundColor = "gray";
+document.body.style.justifyContent = "center"
 
 const formContainer = document.createElement("div");
 formContainer.setAttribute("id", "formContainer");
+formContainer.style.width = "750px";
+formContainer.style.justifyContent = "center"
 document.body.appendChild(formContainer);
-formContainer.style.width = "100%";
+
 
 const formTitle = document.createElement("h1");
 formTitle.innerHTML = "Choose your area!";
@@ -34,22 +37,24 @@ gameContainer.style.height = "750px"
 gameContainer.style.display = "flex"
 gameContainer.style.flex = "1"
 gameContainer.style.flexWrap = "wrap"
-document.body.appendChild(game)
+gameContainer.style.justifyContent = "center"
+gameContainer.setAttribute("id", "gameContainer")
+document.body.appendChild(gameContainer)
 
-function mkBlocks(num=65) {
+function mkBlocks(num) {
     
-    let x = 1;   
+    let x = 1;
 
     while (x<=num) {
 
-        const container = document.createElement('div');
-        container.setAttribute("id", "container");
-        container.style.height = `${100/num}%`;
-        container.style.display = "flex";
-        container.style.flexGrow = "1";
-        container.style.margin = "0px";
+        const rowContainer = document.createElement('div');
+        rowContainer.setAttribute("id", "rowContainer");
+        rowContainer.style.height = `${750/num}px`;
+        rowContainer.style.width = "750px";
+        rowContainer.style.display = "flex";
+        rowContainer.style.margin = "0px";
         
-        gameContainer.appendChild(container);
+        gameContainer.appendChild(rowContainer);
 
         let i=1;
 
@@ -57,7 +62,7 @@ function mkBlocks(num=65) {
             
             const div = document.createElement('div');
             div.setAttribute("id", "block");
-            div.style.flexGrow = "1";
+            div.style.width = `${750/num}px`
             div.style.backgroundColor = "black";
             div.style.display = "flex";
             div.style.margin = "1px";
@@ -67,7 +72,7 @@ function mkBlocks(num=65) {
                 div.style.backgroundColor = "white"
             };
 
-            container.appendChild(div);
+            rowContainer.appendChild(div);
             
             i++;
             
